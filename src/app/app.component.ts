@@ -1,34 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Color } from 'ng2-charts';
+import { Component } from '@angular/core';
+import { ChartConfiguration } from 'chart.js';
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: [ './app.component.css' ]
 })
 export class AppComponent {
-  public bubbleChartOptions: ChartOptions = {
-    responsive: true,
+  title = 'ng2-charts-demo';
+
+  public bubbleChartOptions: ChartConfiguration<'bubble'>['options'] = {
+    responsive: false,
     scales: {
-      xAxes: [{
-        ticks: {
-          min: 0,
-          max: 30,
-        }
-      }],
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 30,
-        }
-      }]
+      x: {
+        min: 0,
+        max: 30,
+      },
+      y: {
+        min: 0,
+        max: 30,
+      }
     }
   };
-  public bubbleChartType: ChartType = 'bubble';
   public bubbleChartLegend = true;
 
-  public bubbleChartData: ChartDataSets[] = [
+  public bubbleChartDatasets: ChartConfiguration<'bubble'>['data']['datasets'] = [
     {
       data: [
         { x: 10, y: 10, r: 10 },
@@ -40,8 +36,7 @@ export class AppComponent {
     },
   ];
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
   }
+
 }
